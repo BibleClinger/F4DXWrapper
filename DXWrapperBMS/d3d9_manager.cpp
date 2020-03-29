@@ -12,6 +12,7 @@ void d3d9_manager::F4MemoryCallback(bool bSucceeded, bool bIs3D, bool IsExitGame
 		if(bIs3D)
 		{
 			//SleepEx(dwSleepBeforeStopDrawing, FALSE);
+			//We should be calling a d3d9 clear() to paint the screen.
 			getManager().setDraw(false);
 		}
 		else
