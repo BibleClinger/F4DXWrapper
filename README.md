@@ -3,7 +3,9 @@ This project is a D3D9 Wrapper that is compatible with Falcon BMS 4.34 U3 server
 
 # Purpose
 
-BMS, as of 4.34 U3, does not have a dedicated server. The client must function as a server. Additionally, the server instance *must* enter the 3D world when hosting Campaigns and Tactical Engagements, even if it is to be used as a dedicated server. This unncessary rendering puts a strain on the Falcon BMS server. This DLL is meant as a lightweight interim solution to mitigate server stress until a proper dedicated server is created.
+BMS, as of 4.34 U3, does not have a dedicated server. The client must function as a server. Additionally, the server instance *must* enter the 3D world when hosting Campaigns and Tactical Engagements, even if it is to be used as a dedicated server. This unncessary rendering puts a strain on the Falcon BMS server.
+
+This DLL is meant as a lightweight interim solution to mitigate server stress until a proper dedicated server is created.
 
 # Installation
 
@@ -19,4 +21,4 @@ Everything about Falcon BMS server operations apply, except for two things:
 
 # Prior Testing
 
-UOAF has tested this project during early development during regular weekly MP events. No crashes. \o/
+UOAF has tested this project throughout early development during regular weekly MP events. No crashes. \o/
