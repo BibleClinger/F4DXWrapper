@@ -27,39 +27,23 @@ private:
 	///////////////
 
 	// DLL Variables
-	HINSTANCE hinstThisDLL;
-	HINSTANCE hinstRealDLL;
-	bool bDynamicallyLoaded;
-	fnDirect3DCreate9 fnCreate9;
-	fnDirect3DCreate9Ex fnCreate9Ex;
+	HINSTANCE hinstThisDLL = nullptr;
+	HINSTANCE hinstRealDLL = nullptr;
+	bool bDynamicallyLoaded = false;
+	fnDirect3DCreate9 fnCreate9 = nullptr;
+	fnDirect3DCreate9Ex fnCreate9Ex = nullptr;
 
 	// D3D9 variables
-	bool bDraw;
+	bool bDraw = true;
 
 	// Init variables
-	bool bInit;
+	bool bInit = false;
 
 	// Object variables
-	F4IReader* memReader;
-	std::thread *m_thread;
+	F4IReader* memReader = nullptr;
+	std::thread* m_thread = nullptr;
 
-	d3d9_manager()
-	{
-		// Note: This object should NOT 
-
-		// Initialize variables to 0/false/NULL
-		bInit = false;
-		fnCreate9 = NULL;
-		fnCreate9Ex = NULL;
-		bDynamicallyLoaded = false;
-		hinstThisDLL = NULL;
-		hinstRealDLL = NULL;
-		//pd3d9 = NULL;
-		memReader = NULL;
-		m_thread = NULL;
-		// Initialize variables to 1/true
-		bDraw = true;
-	}
+	d3d9_manager() = default;
 
 	// Private initialization functions
 	void initEnvironment();
