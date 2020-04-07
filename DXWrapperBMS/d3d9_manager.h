@@ -77,8 +77,7 @@ public:
 		return version;
 	}
 
-	static BOOL CtrlHandler(DWORD dwCtrlType);
-	static void F4MemoryCallback(bool bSucceeded, bool bIs3D, bool IsExitGame);
+	static BOOL WINAPI CtrlHandler(DWORD dwCtrlType);
 
 	// Deleting constructor copy and assign. Singleton pattern, baby.
 	d3d9_manager(d3d9_manager const&) = delete;

@@ -5,7 +5,7 @@
 #include <thread>
 #include <chrono>
 
-BOOL d3d9_manager::CtrlHandler(DWORD dwCtrlType)
+BOOL WINAPI d3d9_manager::CtrlHandler(DWORD dwCtrlType)
 {
 	switch(dwCtrlType)
 	{
