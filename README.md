@@ -21,4 +21,4 @@ Everything about Falcon BMS server operations apply, except for two things:
 
 # Prior Testing
 
-UOAF has tested this project during early development during regular weekly MP events. No crashes. \o/
+UOAF has tested this project throughout early development during regular weekly MP events. No crashes. \o/
