@@ -2,25 +2,8 @@
 #include <io.h>
 #include <fcntl.h>
 #include <iostream>
-
-const char const* g_szVersion = "0.0.3-alpha.1";
-
-void d3d9_manager::F4MemoryCallback(bool bSucceeded, bool bIs3D, bool IsExitGame)
-{
-	if (bSucceeded)
-	{
-		if(bIs3D)
-		{
-			//SleepEx(dwSleepBeforeStopDrawing, FALSE);
-			//We should be calling a d3d9 clear() to paint the screen.
-			getManager().setDraw(false);
-		}
-		else
-		{
-			getManager().setDraw(true);
-		}
-	}
-}
+#include <thread>
+#include <chrono>
 
 BOOL d3d9_manager::CtrlHandler(DWORD dwCtrlType)
 {
@@ -31,7 +14,7 @@ BOOL d3d9_manager::CtrlHandler(DWORD dwCtrlType)
 		return true;
 	case CTRL_C_EVENT:
 		getManager().setDraw(!getManager().shouldDraw());
-		return false;
+		return true;
 	}
 	return false;
 }
@@ -59,6 +42,7 @@ void d3d9_manager::setDLL(HINSTANCE hinstDLL, DWORD dwReason, LPVOID lpvReserved
 {
 	// Note: This call is expected from DLLMAIN.
 	// DO *NOT* DO ANTYHING HERE THAT ISN'T SAFE.
+	// This may not even be needed.
 	this->hinstThisDLL = hinstDLL;
 	this->bDynamicallyLoaded = (lpvReserved == NULL);
 }
@@ -73,17 +57,12 @@ void d3d9_manager::initEnvironment()
 		establishIO();
 		// Thread for Falcon memory analyzer.
 		memReader = new F4IReader();
-		memReader->Monitor3DAsync(d3d9_manager::F4MemoryCallback);
+		//memReader->Monitor3DAsync(d3d9_manager::F4MemoryCallback);
+		m_thread = new std::thread(&d3d9_manager::poll3DEnvironment, this);
 		bInit = true;
 	}
 }
 
-/*
-void d3d9_manager::setD3D9(D9Wrapper::IDirect3D9* pd3d9)
-{
-	this->pd3d9 = pd3d9;
-}
-*/
 fnDirect3DCreate9 d3d9_manager::getRealCreate9fn()
 {
 	initEnvironment();
@@ -112,7 +91,7 @@ void d3d9_manager::establishIO()
 	bool bAttached = false;
 	bool bAlloc = false;
 
-	std::string sTitle = "{DXWrapperBMS" + std::string(g_szVersion) + "} [CTRL + BREAK] or [CTRL + C] to enable/disable drawing.";
+	std::string sTitle = "{DXWrapperBMS" + getVersion() + "} [CTRL + BREAK] or [CTRL + C] to enable/disable drawing.";
 
 	if(GetConsoleWindow())
 	{
@@ -130,9 +109,51 @@ void d3d9_manager::establishIO()
 	// We should have a console by now.
 	if (!bExistingConsole && !bAttached && !bAlloc)
 	{
-		// We have a weird situation. Abort! Abort! Or just keep going.
+		// We have a weird situation. Abort! Abort! Or just keep going...
 	}
 
 	SetConsoleCtrlHandler(d3d9_manager::CtrlHandler, TRUE);
 	SetConsoleTitle(sTitle.c_str());
+}
+
+void d3d9_manager::poll3DEnvironment()
+{
+	bool bIn3D = false;
+	bool bIsExitGame = false;
+
+	bool bOld3D = false;
+	bool bFirst = true;
+	bool bMonitor = true;
+
+	while (std::this_thread::sleep_for(std::chrono::milliseconds(PollMemoryRateMS)), bMonitor)
+	{
+		if (!memReader->peekVariables(bIn3D, bIsExitGame))
+		{
+			// Error reading. Shared memory isn't set up.
+
+			// Danger, Will Robinson!
+			continue;
+		}
+		if (bIsExitGame)
+		{
+			// We're bingo on time. BMS thinks it's exiting.
+
+			// Danger, Will Robinson!
+			setDraw(true); // We should probably be drawing.
+			bMonitor = false; // We should stop monitoring.
+		}
+
+		if (bFirst)
+		{
+			// This is our first read, so set some initial variables and ignore this. The drawing will start as true upon startup, and we should be in 2D anyway at that point.
+			bFirst = false;
+		}
+		else if (bIn3D != bOld3D)
+		{
+			// This is not the first run, *and* we have a new 3D state.
+			//SetConsoleTitle("3D change in Falcon BMS detected..."); // Change to an IO function in the manager.
+			setDraw(!bIn3D); // Don't draw in 3D; draw when NOT in 3D.
+		}
+		bOld3D = bIn3D; // Save the old value.
+	}
 }

@@ -2,16 +2,23 @@
 
 #include "d3d9_main.h"
 #include "F4IReader.h"
+#include <string>
 
-extern const char const* g_szVersion;
+/*
+	TODO:
+		- Change output to a function with a strategy: void setText() which calls the setConsoleTitle()????
+		- Consider taking input from the BMS command line: -DXWrapperBMS_PollRate=50
+*/
 
 class d3d9_manager
 {
 private:
 
 	// Constants
-	const char* szRealDLLPath = "C:\\Windows\\system32\\d3d9.dll";
-	const DWORD dwSleepBeforeStopDrawing = 1000; // This is a delay so the admin can see that the server made it to 3D. This seems like a poor choice. Should probably blank the screen with some color instead to make our point.
+	inline static const char *m_szVersion = "0.0.3-alpha.1";
+	inline static const char* szRealDLLPath = "C:\\Windows\\system32\\d3d9.dll";
+	//const int dwSleepBeforeStopDrawing = 1000; // This is a delay so the admin can see that the server made it to 3D. This seems like a poor choice. Should probably blank the screen with some color instead to make our point.
+	inline static const int PollMemoryRateMS = 5000;
 
 	///////////////
 	// Variables //
@@ -25,7 +32,6 @@ private:
 	fnDirect3DCreate9Ex fnCreate9Ex;
 
 	// D3D9 variables
-	//D9Wrapper::IDirect3D9* pd3d9;
 	bool bDraw;
 
 	// Init variables
@@ -33,6 +39,7 @@ private:
 
 	// Object variables
 	F4IReader* memReader;
+	std::thread *m_thread;
 
 	d3d9_manager()
 	{
@@ -47,7 +54,7 @@ private:
 		hinstRealDLL = NULL;
 		//pd3d9 = NULL;
 		memReader = NULL;
-
+		m_thread = NULL;
 		// Initialize variables to 1/true
 		bDraw = true;
 	}
@@ -63,6 +70,13 @@ public:
 		static d3d9_manager singleton;
 		return singleton;
 	}
+
+	static const std::string& getVersion()
+	{
+		static const std::string version = m_szVersion;
+		return version;
+	}
+
 	static BOOL CtrlHandler(DWORD dwCtrlType);
 	static void F4MemoryCallback(bool bSucceeded, bool bIs3D, bool IsExitGame);
 
@@ -100,4 +114,5 @@ public:
 
 	// Establishes 
 	void establishIO();
+	void poll3DEnvironment();
 };
