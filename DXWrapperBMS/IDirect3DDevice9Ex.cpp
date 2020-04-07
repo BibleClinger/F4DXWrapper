@@ -45,7 +45,7 @@ namespace D9Wrapper
 	}
 	STDMETHODIMP IDirect3DDevice9Ex::GetDirect3D(THIS_ IDirect3D9** ppD3D9)
 	{
-		if (m_IDirect3D9Ex != NULL)
+		if (m_IDirect3D9Ex != nullptr)
 		{
 			m_IDirect3D9Ex->AddRef(); // We have to add a ref directly, since we are NOT passing this on to m_IDirect3DDevice9Ex.
 			*ppD3D9 = m_IDirect3D9Ex;

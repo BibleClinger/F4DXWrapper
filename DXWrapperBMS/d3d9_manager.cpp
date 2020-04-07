@@ -44,7 +44,7 @@ void d3d9_manager::setDLL(HINSTANCE hinstDLL, DWORD dwReason, LPVOID lpvReserved
 	// DO *NOT* DO ANTYHING HERE THAT ISN'T SAFE.
 	// This may not even be needed.
 	this->hinstThisDLL = hinstDLL;
-	this->bDynamicallyLoaded = (lpvReserved == NULL);
+	this->bDynamicallyLoaded = (lpvReserved == nullptr);
 }
 
 void d3d9_manager::initEnvironment()

@@ -16,11 +16,11 @@ protected:
 	DWORD c_dwSleepDelay = 5000; // 5 seconds
 
 	// Member Variables
-	std::thread *m_thread = NULL;
-	HANDLE m_hMapping = NULL;
-	HANDLE m_hView = NULL;
+	std::thread *m_thread = nullptr;
+	HANDLE m_hMapping = nullptr;
+	HANDLE m_hView = nullptr;
 	bool bMonitor = false;
-	IntellivibeData *m_ivData = NULL;
+	IntellivibeData *m_ivData = nullptr;
 	DWORD m_dwSleepDelay;
 public:
 	// Public functions
