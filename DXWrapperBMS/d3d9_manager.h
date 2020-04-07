@@ -68,7 +68,8 @@ private:
 public:
 	static d3d9_manager& getManager()
 	{
-		// This singleton creation strategy is supposed to be thread-safe as of C++11 and VS2015. (Woo!)
+		// Thread-safe as of C++11 and VS2015.
+		// (see https://preshing.com/20130930/double-checked-locking-is-fixed-in-cpp11/)
 		static d3d9_manager singleton;
 		return singleton;
 	}
