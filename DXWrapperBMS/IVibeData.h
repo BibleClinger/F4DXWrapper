@@ -1,5 +1,5 @@
-#ifndef _IVIBE_DATA_H
-#define _IVIBE_DATA_H
+#pragma once
+
 /*
 landing gear status
 wheel brake status
@@ -81,4 +81,3 @@ public:
 };
 
 extern IntellivibeData g_intellivibeData; // "FalconIntellivibeSharedMemoryArea"
-#endif
