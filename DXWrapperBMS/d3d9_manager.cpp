@@ -125,7 +125,7 @@ void d3d9_manager::poll3DEnvironment()
 	bool bFirst = true;
 	bool bMonitor = true;
 
-	while (std::this_thread::sleep_for(std::chrono::milliseconds(PollMemoryRateMS)), bMonitor)
+	while (std::this_thread::sleep_for(PollMemoryRate), bMonitor)
 	{
 		if (!memReader->peekVariables(bIn3D, bIsExitGame))
 		{

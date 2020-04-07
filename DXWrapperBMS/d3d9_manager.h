@@ -2,6 +2,8 @@
 
 #include "d3d9_main.h"
 #include "F4IReader.h"
+
+#include <chrono>
 #include <string>
 
 /*
@@ -18,7 +20,7 @@ private:
 	inline static const char *m_szVersion = "0.0.3-alpha.1";
 	inline static const char* szRealDLLPath = "C:\\Windows\\system32\\d3d9.dll";
 	//const int dwSleepBeforeStopDrawing = 1000; // This is a delay so the admin can see that the server made it to 3D. This seems like a poor choice. Should probably blank the screen with some color instead to make our point.
-	inline static const int PollMemoryRateMS = 5000;
+	constexpr static auto PollMemoryRate = std::chrono::seconds(5);
 
 	///////////////
 	// Variables //
