@@ -16,7 +16,6 @@ protected:
 	DWORD c_dwSleepDelay = 5000; // 5 seconds
 
 	// Member Variables
-	std::thread *m_thread = nullptr;
 	HANDLE m_hMapping = nullptr;
 	HANDLE m_hView = nullptr;
 	bool bMonitor = false;

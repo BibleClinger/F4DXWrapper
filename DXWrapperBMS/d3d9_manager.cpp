@@ -58,7 +58,9 @@ void d3d9_manager::initEnvironment()
 		// Thread for Falcon memory analyzer.
 		memReader = new F4IReader();
 		//memReader->Monitor3DAsync(d3d9_manager::F4MemoryCallback);
-		m_thread = new std::thread(&d3d9_manager::poll3DEnvironment, this);
+
+		// Fire off the polling thread. We don't join it on exit, so detach immediately.
+		std::thread(&d3d9_manager::poll3DEnvironment, this).detach();
 		bInit = true;
 	}
 }
