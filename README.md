@@ -1,5 +1,5 @@
 # DXWrapperBMS
-This project is a D3D9 Wrapper that is compatible with Falcon BMS 4.34 U3 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
+This project is a D3D9 Wrapper developed by BibleClinger that is compatible with Falcon BMS 4.34 U3 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
 
 # Purpose
 
@@ -22,3 +22,12 @@ Everything about Falcon BMS server operations apply, except for two things:
 # Prior Testing
 
 UOAF has tested this project throughout early development during regular weekly MP events. No crashes. \o/
+
+# Extra Reading
+
+* The Windows API for Direct3D 9: https://docs.microsoft.com/en-us/windows/win32/api/_direct3d9/. This resource is necessary for any D3D9 project.
+* Matt's Webcorner's D3D9Interceptor: http://graphics.stanford.edu/~mdfisher/D3D9Interceptor.html. Matt's work was very helpful in understanding how to intercept D3D9 calls.
+
+# Disclaimer
+
+This project is not affilliated with Benchmark Sims. It is a 3rd party DLL designed to support Falcon BMS server administrators.
