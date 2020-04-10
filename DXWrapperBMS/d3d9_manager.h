@@ -2,6 +2,8 @@
 
 #include "d3d9_main.h"
 #include "F4IReader.h"
+
+#include <chrono>
 #include <string>
 
 /*
@@ -18,46 +20,30 @@ private:
 	inline static const char *m_szVersion = "0.0.3-alpha.1";
 	inline static const char* szRealDLLPath = "C:\\Windows\\system32\\d3d9.dll";
 	//const int dwSleepBeforeStopDrawing = 1000; // This is a delay so the admin can see that the server made it to 3D. This seems like a poor choice. Should probably blank the screen with some color instead to make our point.
-	inline static const int PollMemoryRateMS = 5000;
+	constexpr static auto PollMemoryRate = std::chrono::seconds(5);
 
 	///////////////
 	// Variables //
 	///////////////
 
 	// DLL Variables
-	HINSTANCE hinstThisDLL;
-	HINSTANCE hinstRealDLL;
-	bool bDynamicallyLoaded;
-	fnDirect3DCreate9 fnCreate9;
-	fnDirect3DCreate9Ex fnCreate9Ex;
+	HINSTANCE hinstThisDLL = nullptr;
+	HINSTANCE hinstRealDLL = nullptr;
+	bool bDynamicallyLoaded = false;
+	fnDirect3DCreate9 fnCreate9 = nullptr;
+	fnDirect3DCreate9Ex fnCreate9Ex = nullptr;
 
 	// D3D9 variables
-	bool bDraw;
+	bool bDraw = true;
 
 	// Init variables
-	bool bInit;
+	bool bInit = false;
 
 	// Object variables
-	F4IReader* memReader;
-	std::thread *m_thread;
+	F4IReader* memReader = nullptr;
+	std::thread* m_thread = nullptr;
 
-	d3d9_manager()
-	{
-		// Note: This object should NOT 
-
-		// Initialize variables to 0/false/NULL
-		bInit = false;
-		fnCreate9 = NULL;
-		fnCreate9Ex = NULL;
-		bDynamicallyLoaded = false;
-		hinstThisDLL = NULL;
-		hinstRealDLL = NULL;
-		//pd3d9 = NULL;
-		memReader = NULL;
-		m_thread = NULL;
-		// Initialize variables to 1/true
-		bDraw = true;
-	}
+	d3d9_manager() = default;
 
 	// Private initialization functions
 	void initEnvironment();
@@ -66,7 +52,8 @@ private:
 public:
 	static d3d9_manager& getManager()
 	{
-		// This singleton creation strategy is supposed to be thread-safe as of C++11 and VS2015. (Woo!)
+		// Thread-safe as of C++11 and VS2015.
+		// (see https://preshing.com/20130930/double-checked-locking-is-fixed-in-cpp11/)
 		static d3d9_manager singleton;
 		return singleton;
 	}

@@ -86,7 +86,7 @@ namespace D9Wrapper
 		{
 			*ppReturnedDeviceInterface = new IDirect3DDevice9(real_ppReturnedDeviceInterface, this);
 		}
-		else *ppReturnedDeviceInterface = NULL;
+		else *ppReturnedDeviceInterface = nullptr;
 		return hr;
 	}
 	STDMETHODIMP_(UINT) IDirect3D9Ex::GetAdapterModeCountEx(THIS_ UINT Adapter, CONST D9Real::D3DDISPLAYMODEFILTER* pFilter)
@@ -111,7 +111,7 @@ namespace D9Wrapper
 		{
 			*ppReturnedDeviceInterface = new IDirect3DDevice9Ex(real_ppReturnedDeviceInterface, this);
 		}
-		else *ppReturnedDeviceInterface = NULL;
+		else *ppReturnedDeviceInterface = nullptr;
 		return hr;
 	}
 	STDMETHODIMP IDirect3D9Ex::GetAdapterLUID(THIS_ UINT Adapter, LUID* pLUID)

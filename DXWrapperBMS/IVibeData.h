@@ -1,5 +1,6 @@
 #ifndef _IVIBE_DATA_H
 #define _IVIBE_DATA_H
+
 /*
 landing gear status
 wheel brake status

@@ -120,7 +120,7 @@ bool F4IReader::ConnectSharedMemory()
 
 void F4IReader::DisconnectSharedMemory()
 {
-	m_ivData = NULL;
+	m_ivData = nullptr;
 	UnmapViewOfFile(m_hView);
 	CloseHandle(m_hMapping);
 }

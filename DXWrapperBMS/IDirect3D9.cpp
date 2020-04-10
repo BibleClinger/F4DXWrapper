@@ -94,9 +94,9 @@ namespace D9Wrapper
 		hr = m_IDirect3D9->CreateDevice(Adapter, DeviceType, hFocusWindow, BehaviorFlags, pPresentationParameters, &real_pReturnedDeviceInterface);
 		if (hr == D3D_OK)
 		{
-			*ppReturnedDeviceInterface = new IDirect3DDevice9(real_pReturnedDeviceInterface, NULL);
+			*ppReturnedDeviceInterface = new IDirect3DDevice9(real_pReturnedDeviceInterface, nullptr);
 		}
-		else *ppReturnedDeviceInterface = NULL;
+		else *ppReturnedDeviceInterface = nullptr;
 		return hr;
 	}
 }
