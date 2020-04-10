@@ -3,6 +3,7 @@
 #include "d3d9_main.h"
 #include "F4IReader.h"
 
+#include <thread>
 #include <chrono>
 #include <string>
 
@@ -40,7 +41,7 @@ private:
 	bool bInit = false;
 
 	// Object variables
-	F4IReader* memReader = nullptr;
+	F4IReader memReader;
 	std::thread* m_thread = nullptr;
 
 	d3d9_manager() = default;

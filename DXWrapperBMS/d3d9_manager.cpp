@@ -56,9 +56,6 @@ void d3d9_manager::initEnvironment()
 		// Establish cheap IO with the server admin.
 		establishIO();
 		// Thread for Falcon memory analyzer.
-		memReader = new F4IReader();
-		//memReader->Monitor3DAsync(d3d9_manager::F4MemoryCallback);
-
 		// Fire off the polling thread. We don't join it on exit, so detach immediately.
 		std::thread(&d3d9_manager::poll3DEnvironment, this).detach();
 		bInit = true;
@@ -129,7 +126,7 @@ void d3d9_manager::poll3DEnvironment()
 
 	while (std::this_thread::sleep_for(PollMemoryRate), bMonitor)
 	{
-		if (!memReader->peekVariables(bIn3D, bIsExitGame))
+		if (!memReader.peekVariables(bIn3D, bIsExitGame))
 		{
 			// Error reading. Shared memory isn't set up.
 
