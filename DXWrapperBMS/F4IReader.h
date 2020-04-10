@@ -5,9 +5,6 @@
 
 class F4IReader
 {
-public:
-	// Typedefs
-	typedef void (*F4IREADER_CALLBACK_TYPE)(F4IReader* self, bool bSucceeded, bool bIs3D, bool bIsExit);
 protected:
 	// Const variables
 	const char const* c_szSharedNameSpace = "FalconIntellivibeSharedMemoryArea";
@@ -15,7 +12,6 @@ protected:
 	// Member Variables
 	HANDLE m_hMapping = nullptr;
 	HANDLE m_hView = nullptr;
-	bool bMonitor = false;
 	IntellivibeData *m_ivData = nullptr;
 
 public:
