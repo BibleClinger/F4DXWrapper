@@ -2,15 +2,15 @@
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 {
+	(void)lpvReserved; // Unreferences formal parameter.
+
 	switch (fdwReason)
 	{
 	case DLL_PROCESS_ATTACH:
-		d3d9_manager::getManager().setDLL(hinstDLL, fdwReason, lpvReserved);
+		d3d9_manager::getManager().setDLL(hinstDLL);
 		return TRUE;
 	case DLL_PROCESS_DETACH:
-		break;
 	case DLL_THREAD_ATTACH:
-		break;
 	case DLL_THREAD_DETACH:
 		break;
 	}
