@@ -181,9 +181,9 @@
     <ClCompile Include="DLLMain.cpp" />
     <ClCompile Include="F4IReader.cpp" />
     <ClCompile Include="IDirect3D9.cpp" />
+    <ClCompile Include="IDirect3D9Ex.cpp" />
     <ClCompile Include="IDirect3DDevice9.cpp" />
     <ClCompile Include="IDirect3DDevice9Ex.cpp" />
-    <ClCompile Include="IDirect3DEx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DXWrapperBMS.rc" />

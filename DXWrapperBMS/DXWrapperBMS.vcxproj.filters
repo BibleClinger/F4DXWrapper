@@ -59,9 +59,6 @@
     <ClCompile Include="IDirect3D9.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IDirect3DEx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IDirect3DDevice9.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,6 +69,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="F4IReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IDirect3D9Ex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
