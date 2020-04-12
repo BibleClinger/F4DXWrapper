@@ -9,15 +9,21 @@ This DLL is meant as a lightweight interim solution to mitigate server stress un
 
 # Installation
 
-- For 64-bit servers, place x64\d3d9.dll inside `Falcon BMS 4.34\bin\x64`.
-- For 32-bit servers, place x86\d3d9.dll inside `Falcon BMS 4.34\bin\x86\`, and please consider running BMS in 64-bit. :)
+- For 64-bit servers, place `x64\d3d9.dll` inside `Falcon BMS 4.34\bin\x64`.
+- For 32-bit servers, place `x86\d3d9.dll` inside `Falcon BMS 4.34\bin\x86\`. Please consider running BMS in 64-bit, as there is little reason to run a 32-bit BMS server these days. :)
 
 # Usage (for Falcon BMS server administrators)
 
-Everything about Falcon BMS server operations apply, except for two things:
+Everything about Falcon BMS server operations apply, with some exceptions:
 
-- When it comes time to exit the server from 3D, this may be difficult as you will be blind. Nevertheless, `ESC -> E` still works.
-- If you need to enable/disable drawing, focus the console window (the black DOS-like window) that should be attached to the BMS process, and press either `CTRL + BREAK` or `CTRL + C`.
+- If the DLL has been installed and loaded successfully, you should see a console window (a black DOS-like window) when the server is launched. The title bar of the console window will have the name of the DLL project and the version.
+- It may appear that the server has frozen before it enters 3D. This likely means that the drawing has stopped successfully prior to drawing the 3D view. If your server is configured for audio, hearing the sound from the jet is a good sign all is working well.
+- When it comes time to exit the server from 3D, this may be difficult as you will be blind. Nevertheless:
+  - Ensure that focus is on the BMS window (and NOT the console window).
+  - Press `ESC -> E` to exit. You may need to pause briefly between the `ESC` and the `E`.
+- If you need to enable/disable drawing:
+  - Place the focus on the aforementioned console window (and NOT the BMS window).
+  - Press either `CTRL + BREAK` or `CTRL + C`.
 
 # Prior Testing
 
