@@ -4,15 +4,16 @@
 
 namespace D9Wrapper
 {
-	//class IDirect3DDevice9;
-
-	class IDirect3D9 : IUnknown //ID9WrapperUnknown
+	class IDirect3D9 : public IUnknown //ID9WrapperUnknown
 	{
 	protected:
-		/*** Helper information ***/
 		D9Real::IDirect3D9* m_IDirect3D9;
 	public:
-		IDirect3D9(D9Real::IDirect3D9* obj);
+		IDirect3D9(D9Real::IDirect3D9* direct3d)
+		{
+			m_IDirect3D9 = direct3d;
+		}
+
 		/*** IUnknown methods ***/
 		STDMETHOD(QueryInterface)(THIS_ REFIID riid, void** ppvObj);
 		STDMETHOD_(ULONG, AddRef)(THIS);

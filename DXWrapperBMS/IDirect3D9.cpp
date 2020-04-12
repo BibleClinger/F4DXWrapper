@@ -1,13 +1,11 @@
 #include "IDirect3D9.h"
 #include "IDirect3DDevice9.h"
 
+#pragma warning(push)
+#pragma warning(disable : 26812) // Temporarily disable warnings over enums not being enum classes
+
 namespace D9Wrapper
 {
-	IDirect3D9::IDirect3D9(D9Real::IDirect3D9* obj)
-	{
-		m_IDirect3D9 = obj;
-	}
-
 	STDMETHODIMP IDirect3D9::QueryInterface(THIS_ REFIID riid, void** ppvObj)
 	{
 		return m_IDirect3D9->QueryInterface(riid, ppvObj);
@@ -100,3 +98,5 @@ namespace D9Wrapper
 		return hr;
 	}
 }
+
+#pragma warning(pop)
