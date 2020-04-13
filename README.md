@@ -9,8 +9,7 @@ This DLL is meant as a lightweight interim solution to mitigate server stress un
 
 # Installation
 
-- For 64-bit servers, place x64\d3d9.dll inside `Falcon BMS 4.34\bin\x64`.
-- For 32-bit servers, place x86\d3d9.dll inside `Falcon BMS 4.34\bin\x86\`, and please consider running BMS in 64-bit. :)
+Place `d3d9.dll` inside `Falcon BMS 4.34\bin\x64`.
 
 # Usage (for Falcon BMS server administrators)
 
