@@ -3,7 +3,6 @@
 
 namespace D9Wrapper
 {
-	//class ID9WrapperUnknown;
 	class IDirect3D9;
 	class IDirect3D9Ex;
 	class IDirect3DDevice9;

@@ -4,15 +4,20 @@
 
 namespace D9Wrapper
 {
-	//class IDirect3D9;
-
-	class IDirect3DDevice9 : IUnknown // ID9WrapperUnknown
+	class IDirect3DDevice9 : public IUnknown // ID9WrapperUnknown
 	{
 	protected:
-		D9Real::IDirect3DDevice9* m_IDirect3DDevice9;
+		D9Real::IDirect3DDevice9* m_IDirect3DDevice9; // Not too crazy about using IUnknown. See notes below.
 		IDirect3D9* m_IDirect3D9;
+		bool bInsideScene = false;
+		bool bSceneHandledByWrapper = false;
+
 	public:
-		IDirect3DDevice9(D9Real::IDirect3DDevice9* obj, IDirect3D9* obj2);
+		IDirect3DDevice9(D9Real::IDirect3DDevice9* device, IDirect3D9* direct3d)
+		{
+			m_IDirect3DDevice9 = device;
+			m_IDirect3D9 = direct3d;
+		}
 		/*** IUnknown methods ***/
 		STDMETHOD(QueryInterface)(THIS_ REFIID riid, void** ppvObj);
 		STDMETHOD_(ULONG, AddRef)(THIS);
@@ -134,7 +139,5 @@ namespace D9Wrapper
 		STDMETHOD(DrawTriPatch)(THIS_ UINT Handle, CONST float* pNumSegs, CONST D9Real::D3DTRIPATCH_INFO* pTriPatchInfo);
 		STDMETHOD(DeletePatch)(THIS_ UINT Handle);
 		STDMETHOD(CreateQuery)(THIS_ D9Real::D3DQUERYTYPE Type, D9Real::IDirect3DQuery9** ppQuery);
-
-		//void writeTextToScreen(int x, int y, std::string);
 	};
 }

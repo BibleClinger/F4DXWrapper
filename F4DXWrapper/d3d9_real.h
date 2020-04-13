@@ -1,5 +1,4 @@
 #pragma once
-#pragma warning(disable : 4986)
 
 namespace D9Real
 {

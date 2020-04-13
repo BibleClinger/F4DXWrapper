@@ -2,26 +2,23 @@
 
 #include "d3d9_main.h"
 #include "F4IReader.h"
-
 #include <thread>
 #include <chrono>
 #include <string>
 
 /*
 	TODO:
-		- Change output to a function with a strategy: void setText() which calls the setConsoleTitle()????
 		- Consider taking input from the BMS command line: -DXWrapperBMS_PollRate=50
 */
 
 class d3d9_manager
 {
 private:
-
 	// Constants
-	inline static const char *m_szVersion = "0.0.3-alpha.1";
-	inline static const char* szRealDLLPath = "C:\\Windows\\system32\\d3d9.dll";
-	//const int dwSleepBeforeStopDrawing = 1000; // This is a delay so the admin can see that the server made it to 3D. This seems like a poor choice. Should probably blank the screen with some color instead to make our point.
-	constexpr static auto PollMemoryRate = std::chrono::seconds(5);
+	inline static const char *m_szVersion = "0.0.4-alpha.2";
+	inline static const char *szRealDLLPath = "C:\\Windows\\system32\\d3d9.dll";
+	constexpr static auto PollMemoryRate2D = std::chrono::milliseconds(50);		// We poll this in 2D, trying to get moving as soon as possible.
+	constexpr static auto PollMemoryRate3D = std::chrono::milliseconds(3000);	// We poll this in 3D, trying to sleep as long as possible.
 
 	///////////////
 	// Variables //
@@ -30,7 +27,6 @@ private:
 	// DLL Variables
 	HINSTANCE hinstThisDLL = nullptr;
 	HINSTANCE hinstRealDLL = nullptr;
-	bool bDynamicallyLoaded = false;
 	fnDirect3DCreate9 fnCreate9 = nullptr;
 	fnDirect3DCreate9Ex fnCreate9Ex = nullptr;
 
@@ -65,41 +61,38 @@ public:
 		return version;
 	}
 
-	static BOOL WINAPI CtrlHandler(DWORD dwCtrlType);
+	static BOOL WINAPI CtrlHandler(DWORD dwCtrlType) noexcept(true);
 
 	// Deleting constructor copy and assign. Singleton pattern, baby.
 	d3d9_manager(d3d9_manager const&) = delete;
 	void operator=(d3d9_manager const&) = delete;
 
 	// Initialization functions
-	void setDLL(HINSTANCE hinstDLL, DWORD dwReason, LPVOID lpvReserved);
-	//void setD3D9(D9Wrapper::IDirect3D9* pd3d9);
+	void setDLL(HINSTANCE hinstDLL);
 
 	// Functions to get function pointers to the real DirectX Create* functions.
 	fnDirect3DCreate9 getRealCreate9fn();
 	fnDirect3DCreate9Ex getRealCreate9Exfn();
-
-	// Function to obtain a pointer to the existing IDirect3D9 object.
-	// Note: This may not be useful in the future.
-	/*
-	D9Wrapper::IDirect3D9* getD3D9()
-	{
-		return pd3d9;
-	}
-	*/
 
 	// Sets drawing conditions. true = drawing is enabled; false = drawing is disabled.
 	void setDraw(bool bDraw);
 	// Gets the draw conditions. true = functions calls from BMS to DirectX should be passed through; false = functions calls from BMS to DirectX should be ignored.
 	bool shouldDraw();
 
-	// This is an FPS tracker.
-	//FPSTracker& getFPS()
-	//{
-	//	return fps;
-	//}
-
 	// Establishes 
 	void establishIO();
 	void poll3DEnvironment();
+
+/*
+OUTPUT:
+	Name + Version :	"F4DXWrapper." + getVersion()
+	Msg :				[Msg:""]
+	Instructions :		[CTRL+BRK]or[CTRL+ ]enables/disables drawing.
+
+	Example:
+		DXWrapper1.3.5(Draw:1;PollingRate:50ms)[CTRL+BRK]or[CTRL+ ]enables/disables drawing.
+
+	To set Msg, call setTextOutput().
+*/
+	void setTextOutput(std::string newMsg);
 };
