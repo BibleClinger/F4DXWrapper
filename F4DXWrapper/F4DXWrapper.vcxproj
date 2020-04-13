@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{81ABEA08-CDB5-4F10-B229-0A2B04AEB85D}</ProjectGuid>
-    <RootNamespace>DXWrapperBMS</RootNamespace>
+    <RootNamespace>F4DXWrapper</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>F4DXWrapper</ProjectName>
   </PropertyGroup>
@@ -188,7 +188,7 @@
     <ClCompile Include="IDirect3DDevice9Ex.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="DXWrapperBMS.rc" />
+    <ResourceCompile Include="F4DXWrapper.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

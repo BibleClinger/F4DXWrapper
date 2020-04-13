@@ -1,6 +1,7 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by DXWrapperBMS.rc
+// Used by F4DXWrapper.rc
+//
 
 // Next default values for new objects
 // 

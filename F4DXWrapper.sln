@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DXWrapperBMS", "DXWrapperBMS\DXWrapperBMS.vcxproj", "{81ABEA08-CDB5-4F10-B229-0A2B04AEB85D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "F4DXWrapper", "F4DXWrapper\F4DXWrapper.vcxproj", "{81ABEA08-CDB5-4F10-B229-0A2B04AEB85D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

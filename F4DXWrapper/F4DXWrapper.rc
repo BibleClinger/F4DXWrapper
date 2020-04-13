@@ -70,10 +70,10 @@ BEGIN
             VALUE "CompanyName", "BibleClinger"
             VALUE "FileDescription", "D3D9 Wrapper that is compatible with Falcon BMS 4.34.3 servers."
             VALUE "FileVersion", "0.0.4.2"
-            VALUE "InternalName", "DXWrapperBMS.dll"
+            VALUE "InternalName", "F4DXWrapper.dll"
             VALUE "LegalCopyright", "Copyright (C) 2020"
-            VALUE "OriginalFilename", "DXWrapperBMS.dll"
-            VALUE "ProductName", "DXWrapperBMS"
+            VALUE "OriginalFilename", "F4DXWrapper.dll"
+            VALUE "ProductName", "F4DXWrapper"
             VALUE "ProductVersion", "0.0.4.2"
         END
     END

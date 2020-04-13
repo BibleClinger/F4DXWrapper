@@ -76,7 +76,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="DXWrapperBMS.rc">
+    <ResourceCompile Include="F4DXWrapper.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
