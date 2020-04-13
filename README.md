@@ -3,7 +3,7 @@ This project is a D3D9 Wrapper developed by BibleClinger that is compatible with
 
 # Purpose
 
-BMS, as of 4.34 U3, does not have a dedicated server. The client must function as a server. Additionally, the server instance *must* enter the 3D world when hosting Campaigns and Tactical Engagements, even if it is to be used as a dedicated server. This unncessary rendering puts a strain on the Falcon BMS server.
+BMS, at least up to 4.34 U3 as of this writing, does not have a dedicated server. The client must function as a server. Additionally, the server instance *must* enter the 3D world when hosting Campaigns and Tactical Engagements, even if it is to be used as a dedicated server. This unncessary rendering puts a strain on the Falcon BMS server.
 
 This DLL is meant as a lightweight interim solution to mitigate server stress until a proper dedicated server is created.
 
@@ -13,10 +13,16 @@ Place `d3d9.dll` inside `Falcon BMS 4.34\bin\x64`.
 
 # Usage (for Falcon BMS server administrators)
 
-Everything about Falcon BMS server operations apply, except for two things:
+Everything about Falcon BMS server operations apply, with some exceptions:
 
-- When it comes time to exit the server from 3D, this may be difficult as you will be blind. Nevertheless, `ESC -> E` still works.
-- If you need to enable/disable drawing, focus the console window (the black DOS-like window) that should be attached to the BMS process, and press either `CTRL + BREAK` or `CTRL + C`.
+- If the DLL has been installed and loaded successfully, you should see a console window (a black DOS-like window) when the server is launched. The title bar of the console window will have the name of the DLL project and the version.
+- It may appear that the server has frozen before it enters 3D. This likely means that the drawing has stopped successfully prior to drawing the 3D view. If your server is configured for audio, hearing the sound from the jet is a good sign all is working well.
+- When it comes time to exit the server from 3D, this may be difficult as you will be blind. Nevertheless:
+  - Ensure that focus is on the BMS window (and NOT the console window).
+  - Press `ESC -> E` to exit. You may need to pause briefly between the `ESC` and the `E`.
+- If you need to enable/disable drawing:
+  - Place the focus on the aforementioned console window (and NOT the BMS window).
+  - Press either `CTRL + BREAK` or `CTRL + C`.
 
 # Prior Testing
 
