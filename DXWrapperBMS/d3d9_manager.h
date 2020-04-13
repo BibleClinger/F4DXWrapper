@@ -14,9 +14,8 @@
 class d3d9_manager
 {
 private:
-
 	// Constants
-	inline static const char *m_szVersion = "0.0.4-alpha.1";
+	inline static const char *m_szVersion = "0.0.4-alpha.2";
 	inline static const char *szRealDLLPath = "C:\\Windows\\system32\\d3d9.dll";
 	constexpr static auto PollMemoryRate2D = std::chrono::milliseconds(50);		// We poll this in 2D, trying to get moving as soon as possible.
 	constexpr static auto PollMemoryRate3D = std::chrono::milliseconds(3000);	// We poll this in 3D, trying to sleep as long as possible.
@@ -86,7 +85,7 @@ public:
 
 /*
 OUTPUT:
-	Name + Version :	"DXWrapperBMS " + getVersion()
+	Name + Version :	"F4DXWrapper." + getVersion()
 	Msg :				[Msg:""]
 	Instructions :		[CTRL+BRK]or[CTRL+ ]enables/disables drawing.
 

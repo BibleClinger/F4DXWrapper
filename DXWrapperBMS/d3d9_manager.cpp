@@ -85,7 +85,7 @@ bool d3d9_manager::shouldDraw()
 
 void d3d9_manager::setTextOutput(std::string newMsg)
 {
-	std::string sTitle = "DXWrapperBMS" + getVersion() + "(" + newMsg + ")[CTRL+BRK]or[CTRL+C]enables/disables drawing.";
+	std::string sTitle = "F4DXWrapper." + getVersion() + "(" + newMsg + ")[CTRL+BRK]or[CTRL+C]enables/disables drawing.";
 	SetConsoleTitle(sTitle.c_str());
 }
 
@@ -108,19 +108,19 @@ void d3d9_manager::establishIO()
 		}
 	}
 	// We should have a console by now.
-	if (!bExistingConsole && !bAttached && !bAlloc)
-	{
+	//if (!bExistingConsole && !bAttached && !bAlloc)
+	//{
 		/*
 			This is a situation where:
 				1. we couldn't find a console;
 				2. we couldn't attach to a console; and
 				3. we couldn't allocate a console.
 
-			Something is probably very wrong here, but it may be theoretically possible that we have a console that isn't detected by GetConsoleWindow().
+			It may be theoretically possible that we have a console that isn't detected by GetConsoleWindow().
 
-			For now we do nothing...
+			For now we do nothing different.
 		*/
-	}
+	//}
 
 	SetConsoleCtrlHandler(d3d9_manager::CtrlHandler, TRUE);
 	setTextOutput("Waiting for 3D...");
