@@ -24,13 +24,13 @@ Everything about Falcon BMS server operations apply, with some exceptions:
   - Place the focus on the aforementioned console window (and NOT the BMS window).
   - Press either `CTRL + BREAK` or `CTRL + C`.
 
-# Prior Testing
-
-UOAF has tested this project throughout early development during regular weekly MP events. No crashes. \o/
-
 # Documentation
 
 Please see the project wiki at github for more extensive documentation: https://github.com/BibleClinger/F4DXWrapper/wiki
+
+# Prior Testing
+
+UOAF has tested this project throughout early development during regular weekly MP events. No crashes. \o/
 
 # Extra Reading
 
