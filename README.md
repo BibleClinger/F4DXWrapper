@@ -28,6 +28,10 @@ Everything about Falcon BMS server operations apply, with some exceptions:
 
 UOAF has tested this project throughout early development during regular weekly MP events. No crashes. \o/
 
+# Documentation
+
+Please see the project wiki at github for more extensive documentation: https://github.com/BibleClinger/F4DXWrapper/wiki
+
 # Extra Reading
 
 * The Windows API for Direct3D 9: https://docs.microsoft.com/en-us/windows/win32/api/_direct3d9/. This resource is necessary for any D3D9 project.
