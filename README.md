@@ -1,5 +1,5 @@
 # F4DXWrapper
-This project is a D3D9 Wrapper developed by BibleClinger that is compatible with Falcon BMS 4.34 U3 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
+This project is a D3D9 Wrapper developed by BibleClinger that is compatible with Falcon BMS 4.34 U3 and U4 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
 
 # Purpose
 
