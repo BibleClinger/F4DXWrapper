@@ -44,6 +44,8 @@ void F4DX_manager::loadRealDLL()
 FARPROC F4DX_manager::loadFunction(const char * const szLib, const char * const szFunc)
 {
 	HMODULE hMod = LoadLibrary(szLib);
+
+	initEnvironment(); // This loads the environment if it hasn't been done already. This is key for normal operations.
 	if (hMod)
 	{
 		FARPROC f = GetProcAddress(hMod, szFunc);
@@ -57,28 +59,13 @@ FARPROC F4DX_manager::loadFunction(const char * const szLib, const char * const 
 
 void F4DX_manager::initEnvironment()
 {
-	if(!bInit)
+	if(!bInit)	// We don't need to init more than once.
 	{
-		//loadRealDLL();	// Load the real D3D9.dll. This is 100% necessary.
 		establishIO();	// Establish cheap IO with the server admin.
 		std::thread(&F4DX_manager::poll3DEnvironment, this).detach();  // Fire off the polling thread for Falcon memory analyzer. We don't join it on exit, so detach immediately.
 		bInit = true;
 	}
 }
-
-/*
-fnDirect3DCreate9 F4DX_manager::getRealCreate9fn()
-{
-	initEnvironment();
-	return fnCreate9;
-}
-
-fnDirect3DCreate9Ex F4DX_manager::getRealCreate9Exfn()
-{
-	initEnvironment();
-	return fnCreate9Ex;
-}
-*/
 
 void F4DX_manager::setDraw(bool bNewDraw)
 {
