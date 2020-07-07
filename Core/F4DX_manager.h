@@ -36,7 +36,6 @@ private:
 
 	// Private initialization functions
 	void initEnvironment();
-	void loadRealDLL();
 
 public:
 	static F4DX_manager& getManager()

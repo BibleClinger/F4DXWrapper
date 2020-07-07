@@ -18,29 +18,6 @@ BOOL WINAPI F4DX_manager::CtrlHandler(DWORD dwCtrlType) noexcept(true)
 	return false;
 }
 
-void F4DX_manager::loadRealDLL()
-{
-	/*
-	static bool bRealDLLLoaded = false;
-
-	if (!bRealDLLLoaded)
-	{
-		hinstRealDLL = LoadLibrary(szRealDLLPath);
-		if (hinstRealDLL)
-		{
-#pragma warning( disable : 4191)
-			fnCreate9 = reinterpret_cast<fnDirect3DCreate9>(GetProcAddress(hinstRealDLL, "Direct3DCreate9"));
-			fnCreate9Ex = reinterpret_cast<fnDirect3DCreate9Ex>(GetProcAddress(hinstRealDLL, "Direct3DCreate9Ex"));
-#pragma warning( default : 4191)
-			if (fnCreate9 && fnCreate9Ex)
-			{
-				bRealDLLLoaded = true;
-			}
-		}
-	}
-	*/
-}
-
 FARPROC F4DX_manager::loadFunction(const char * const szLib, const char * const szFunc)
 {
 	HMODULE hMod = LoadLibrary(szLib);
