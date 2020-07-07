@@ -1,7 +1,7 @@
 #include "IDirect3DDevice9.h"
 #include "IDirect3D9.h"
 
-#include "d3d9_manager.h"
+#include "F4DX_manager.h"
 
 #pragma warning(push)
 #pragma warning(disable : 26812) // Temporarily disable warnings over enums not being enum classes
@@ -87,7 +87,7 @@ namespace D9Wrapper
 	}
 	STDMETHODIMP IDirect3DDevice9::Present(THIS_ CONST RECT* pSourceRect, CONST RECT* pDestRect, HWND hDestWindowOverride, CONST RGNDATA* pDirtyRegion) noexcept(true)
 	{
-		//d3d9_manager::getManager().getFPS().AddFrameCount();
+		//F4DX_manager::getManager().getFPS().AddFrameCount();
 		// If calculating FPS ourselves, we should do it here.
 		if (bInsideScene)
 		{
@@ -199,7 +199,7 @@ namespace D9Wrapper
 			return D3DERR_INVALIDCALL;
 		}
 		bInsideScene = true;
-		if (d3d9_manager::getManager().shouldDraw())
+		if (F4DX_manager::getManager().shouldDraw())
 		{
 			bSceneHandledByWrapper = false;
 			return m_IDirect3DDevice9->BeginScene();
@@ -228,7 +228,7 @@ namespace D9Wrapper
 	}
 	STDMETHODIMP IDirect3DDevice9::Clear(THIS_ DWORD Count, CONST D9Real::D3DRECT* pRects, DWORD Flags, D9Real::D3DCOLOR Color, float Z, DWORD Stencil) noexcept(true)
 	{
-		if (d3d9_manager::getManager().shouldDraw())
+		if (F4DX_manager::getManager().shouldDraw())
 		{
 			return m_IDirect3DDevice9->Clear(Count, pRects, Flags, Color, Z, Stencil);
 		}
@@ -384,7 +384,7 @@ namespace D9Wrapper
 	}
 	STDMETHODIMP IDirect3DDevice9::DrawPrimitive(THIS_ D9Real::D3DPRIMITIVETYPE PrimitiveType, UINT StartVertex, UINT PrimitiveCount) noexcept(true)
 	{
-		if (d3d9_manager::getManager().shouldDraw())
+		if (F4DX_manager::getManager().shouldDraw())
 		{
 			return m_IDirect3DDevice9->DrawPrimitive(PrimitiveType, StartVertex, PrimitiveCount);
 		}
@@ -392,7 +392,7 @@ namespace D9Wrapper
 	}
 	STDMETHODIMP IDirect3DDevice9::DrawIndexedPrimitive(THIS_ D9Real::D3DPRIMITIVETYPE PrimitiveType, INT BaseVertexIndex, UINT MinVertexIndex, UINT NumVertices, UINT startIndex, UINT primCount) noexcept(true) // Missing PrimitiveType name
 	{
-		if (d3d9_manager::getManager().shouldDraw())
+		if (F4DX_manager::getManager().shouldDraw())
 		{
 			return m_IDirect3DDevice9->DrawIndexedPrimitive(PrimitiveType, BaseVertexIndex, MinVertexIndex, NumVertices, startIndex, primCount);
 		}
@@ -400,7 +400,7 @@ namespace D9Wrapper
 	}
 	STDMETHODIMP IDirect3DDevice9::DrawPrimitiveUP(THIS_ D9Real::D3DPRIMITIVETYPE PrimitiveType, UINT PrimitiveCount, CONST void* pVertexStreamZeroData, UINT VertexStreamZeroStride) noexcept(true)
 	{
-		if (d3d9_manager::getManager().shouldDraw())
+		if (F4DX_manager::getManager().shouldDraw())
 		{
 			return m_IDirect3DDevice9->DrawPrimitiveUP(PrimitiveType, PrimitiveCount, pVertexStreamZeroData, VertexStreamZeroStride);
 		}
@@ -408,7 +408,7 @@ namespace D9Wrapper
 	}
 	STDMETHODIMP IDirect3DDevice9::DrawIndexedPrimitiveUP(THIS_ D9Real::D3DPRIMITIVETYPE PrimitiveType, UINT MinVertexIndex, UINT NumVertices, UINT PrimitiveCount, CONST void* pIndexData, D9Real::D3DFORMAT IndexDataFormat, CONST void* pVertexStreamZeroData, UINT VertexStreamZeroStride) noexcept(true)
 	{
-		if (d3d9_manager::getManager().shouldDraw())
+		if (F4DX_manager::getManager().shouldDraw())
 		{
 			return m_IDirect3DDevice9->DrawIndexedPrimitiveUP(PrimitiveType, MinVertexIndex, NumVertices, PrimitiveCount, pIndexData, IndexDataFormat, pVertexStreamZeroData, VertexStreamZeroStride);
 		}
@@ -536,7 +536,7 @@ namespace D9Wrapper
 	}
 	STDMETHODIMP IDirect3DDevice9::DrawRectPatch(THIS_ UINT Handle, CONST float* pNumSegs, CONST D9Real::D3DRECTPATCH_INFO* pRectPatchInfo) noexcept(true)
 	{
-		if (d3d9_manager::getManager().shouldDraw())
+		if (F4DX_manager::getManager().shouldDraw())
 		{
 			return m_IDirect3DDevice9->DrawRectPatch(Handle, pNumSegs, pRectPatchInfo);
 		}
@@ -544,7 +544,7 @@ namespace D9Wrapper
 	}
 	STDMETHODIMP IDirect3DDevice9::DrawTriPatch(THIS_ UINT Handle, CONST float* pNumSegs, CONST D9Real::D3DTRIPATCH_INFO* pTriPatchInfo) noexcept(true)
 	{
-		if (d3d9_manager::getManager().shouldDraw())
+		if (F4DX_manager::getManager().shouldDraw())
 		{
 			return m_IDirect3DDevice9->DrawTriPatch(Handle, pNumSegs, pTriPatchInfo);
 		}

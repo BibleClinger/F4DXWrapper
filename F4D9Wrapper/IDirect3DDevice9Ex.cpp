@@ -1,7 +1,7 @@
 #include "IDirect3DDevice9Ex.h"
 #include "IDirect3D9Ex.h"
 
-#include "d3d9_manager.h"
+#include "F4DX_manager.h"
 
 #pragma warning(push)
 #pragma warning(disable : 26812) // Temporarily disable warnings over enums not being enum classes
