@@ -182,6 +182,14 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Core\F4DX_manager.h" />
+    <ClInclude Include="..\Core\F4IReader.h" />
+    <ClInclude Include="..\Core\IVibeData.h" />
+    <ClInclude Include="d3d11_main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Core\F4DX_manager.cpp" />
+    <ClCompile Include="..\Core\F4IReader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
