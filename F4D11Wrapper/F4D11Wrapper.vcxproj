@@ -190,6 +190,7 @@
   <ItemGroup>
     <ClCompile Include="..\Core\F4DX_manager.cpp" />
     <ClCompile Include="..\Core\F4IReader.cpp" />
+    <ClCompile Include="d3d11_entry.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
