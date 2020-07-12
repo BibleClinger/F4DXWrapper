@@ -25,17 +25,17 @@ namespace D11Wrapper
 		m_ID3D11DeviceContext->GetDevice(ppDevice);
 	}
 
-	STDMETHODIMP_(HRESULT) ID3D11DeviceContext::GetPrivateData(THIS_ REFGUID guid, UINT* pDataSize, void* pData)
+	STDMETHODIMP ID3D11DeviceContext::GetPrivateData(THIS_ REFGUID guid, UINT* pDataSize, void* pData)
 	{
 		return m_ID3D11DeviceContext->GetPrivateData(guid, pDataSize, pData);
 	}
 
-	STDMETHODIMP_(HRESULT) ID3D11DeviceContext::SetPrivateData(THIS_ REFGUID guid, UINT DataSize, const void* pData)
+	STDMETHODIMP ID3D11DeviceContext::SetPrivateData(THIS_ REFGUID guid, UINT DataSize, const void* pData)
 	{
 		return m_ID3D11DeviceContext->SetPrivateData(guid, DataSize, pData);
 	}
 
-	STDMETHODIMP_(HRESULT) ID3D11DeviceContext::SetPrivateDataInterface(THIS_ REFGUID guid, const IUnknown* pData)
+	STDMETHODIMP ID3D11DeviceContext::SetPrivateDataInterface(THIS_ REFGUID guid, const IUnknown* pData)
 	{
 		return m_ID3D11DeviceContext->SetPrivateDataInterface(guid, pData);
 	}
@@ -56,7 +56,6 @@ namespace D11Wrapper
 	{
 		m_ID3D11DeviceContext->ClearRenderTargetView(pRenderTargetView, ColorRGBA);
 	}
-
 
 	void STDMETHODCALLTYPE ID3D11DeviceContext::ClearState(THIS)
 	{
@@ -254,7 +253,7 @@ namespace D11Wrapper
 		m_ID3D11DeviceContext->ExecuteCommandList(pCommandList, RestoreContextState);
 	}
 
-	STDMETHODIMP_(HRESULT) ID3D11DeviceContext::FinishCommandList(THIS_ BOOL RestoreDeferredContextState, D11Real::ID3D11CommandList** ppCommandList)
+	STDMETHODIMP ID3D11DeviceContext::FinishCommandList(THIS_ BOOL RestoreDeferredContextState, D11Real::ID3D11CommandList** ppCommandList)
 	{
 		return m_ID3D11DeviceContext->FinishCommandList(RestoreDeferredContextState, ppCommandList);
 	}
@@ -274,7 +273,7 @@ namespace D11Wrapper
 		return m_ID3D11DeviceContext->GetContextFlags();
 	}
 
-	STDMETHODIMP_(HRESULT) ID3D11DeviceContext::GetData(THIS_ D11Real::ID3D11Asynchronous* pAsync, void* pData, UINT DataSize, UINT GetDataFlags)
+	STDMETHODIMP ID3D11DeviceContext::GetData(THIS_ D11Real::ID3D11Asynchronous* pAsync, void* pData, UINT DataSize, UINT GetDataFlags)
 	{
 		return m_ID3D11DeviceContext->GetData(pAsync, pData, DataSize, GetDataFlags);
 	}
@@ -414,7 +413,7 @@ namespace D11Wrapper
 		m_ID3D11DeviceContext->IASetVertexBuffers(StartSlot, NumBuffers, ppVertexBuffers, pStrides, pOffsets);
 	}
 
-	STDMETHODIMP_(HRESULT) ID3D11DeviceContext::Map(THIS_ D11Real::ID3D11Resource* pResource, UINT Subresource, D11Real::D3D11_MAP MapType, UINT MapFlags, D11Real::D3D11_MAPPED_SUBRESOURCE* pMappedResource)
+	STDMETHODIMP ID3D11DeviceContext::Map(THIS_ D11Real::ID3D11Resource* pResource, UINT Subresource, D11Real::D3D11_MAP MapType, UINT MapFlags, D11Real::D3D11_MAPPED_SUBRESOURCE* pMappedResource)
 	{
 		return m_ID3D11DeviceContext->Map(pResource, Subresource, MapType, MapFlags, pMappedResource);
 	}
