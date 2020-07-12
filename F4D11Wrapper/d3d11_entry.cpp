@@ -34,7 +34,7 @@ HRESULT D3D11CreateDevice(D11Real::IDXGIAdapter* pAdapter, D11Real::D3D_DRIVER_T
 	{
 		*ppDevice = nullptr;
 		*ppImmediateContext = nullptr;
-		return E_FAIL; // For now, we send E_FAIL, because we can't even find the real d3d11.dll. Something is wrong.
+		return E_FAIL; // For now, we return E_FAIL, because we can't even find the real d3d11.dll. Something is wrong.
 	}
 	hr = real_D3D11CreateDevice(pAdapter, DriverType, Software, Flags, pFeatureLevels, FeatureLevels, SDKVersion, ppDevice, pFeatureLevel, &ppRealImmediateContext);
 	if (hr == S_OK)
@@ -58,7 +58,7 @@ HRESULT D3D11CreateDeviceAndSwapChain(D11Real::IDXGIAdapter* pAdapter, D11Real::
 		*ppSwapChain = nullptr;
 		*ppDevice = nullptr;
 		*ppImmediateContext = nullptr;
-		return E_FAIL; // For now, we send E_FAIL, because we can't even find the real d3d11.dll. Something is wrong.
+		return E_FAIL; // For now, we return E_FAIL, because we can't even find the real d3d11.dll. Something is wrong.
 	}
 	hr = real_D3D11CreateDeviceAndSwapChain(pAdapter, DriverType, Software, Flags, pFeatureLevels, FeatureLevels, SDKVersion, pSwapChainDesc, ppSwapChain, ppDevice, pFeatureLevel, &ppRealImmediateContext);
 	if (hr == S_OK)
