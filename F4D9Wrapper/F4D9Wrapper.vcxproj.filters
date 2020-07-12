@@ -42,7 +42,7 @@
     <ClInclude Include="..\Core\IVibeData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="F4DX_common.h">
+    <ClInclude Include="..\Core\F4DX_common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

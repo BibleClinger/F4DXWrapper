@@ -182,6 +182,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Core\F4DX_common.h" />
     <ClInclude Include="..\Core\F4DX_manager.h" />
     <ClInclude Include="..\Core\F4IReader.h" />
     <ClInclude Include="..\Core\IVibeData.h" />

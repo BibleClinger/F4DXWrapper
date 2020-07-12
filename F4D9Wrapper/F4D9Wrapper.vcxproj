@@ -182,10 +182,10 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\Core\F4DX_common.h" />
     <ClInclude Include="..\Core\F4DX_manager.h" />
     <ClInclude Include="d3d9_main.h" />
     <ClInclude Include="..\Core\F4IReader.h" />
-    <ClInclude Include="F4DX_common.h" />
     <ClInclude Include="IDirect3D9.h" />
     <ClInclude Include="IDirect3D9Ex.h" />
     <ClInclude Include="IDirect3DDevice9.h" />

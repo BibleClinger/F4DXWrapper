@@ -30,6 +30,9 @@
     <ClInclude Include="ID3D11DeviceContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Core\F4DX_common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Core\F4DX_manager.cpp">
