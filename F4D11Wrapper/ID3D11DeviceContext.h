@@ -7,7 +7,7 @@ namespace D11Wrapper
 	class ID3D11DeviceContext : public IUnknown
 	{
 	protected:
-		D11Real::ID3D11DeviceContext* m_ID3D11DeviceContext;
+		D11Real::ID3D11DeviceContext* m_ID3D11DeviceContext = nullptr;
 
 	public:
 		ID3D11DeviceContext(D11Real::ID3D11DeviceContext* deviceContext)

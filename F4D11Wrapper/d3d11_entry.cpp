@@ -50,7 +50,7 @@ HRESULT D3D11CreateDeviceAndSwapChain(D11Real::IDXGIAdapter* pAdapter, D11Real::
 #pragma F4DX_EXPORT
 	fnD3D11CreateDeviceAndSwapChain real_D3D11CreateDeviceAndSwapChain = nullptr;
 	HRESULT hr;
-	D11Real::ID3D11DeviceContext* ppRealImmediateContext;
+	D11Real::ID3D11DeviceContext* ppRealImmediateContext = nullptr;
 
 	real_D3D11CreateDeviceAndSwapChain = reinterpret_cast<fnD3D11CreateDeviceAndSwapChain>(F4DX_manager::getManager().loadFunction(szRealDLLPath, "D3D11CreateDeviceAndSwapChain"));
 	if (!real_D3D11CreateDeviceAndSwapChain)
