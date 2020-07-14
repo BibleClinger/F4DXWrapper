@@ -1,5 +1,11 @@
 #pragma once
-#define D9EXPORT comment(linker, "/EXPORT:" __FUNCTION__ "=" __FUNCDNAME__)
+
+#include "F4DX_common.h"
+
+namespace D9Real
+{
+#include <d3d9.h>
+}
 
 namespace D9Wrapper
 {
@@ -12,7 +18,7 @@ namespace D9Wrapper
 // Typedefs
 
 typedef D9Real::IDirect3D9* (WINAPI* fnDirect3DCreate9)(UINT);
-typedef HRESULT (WINAPI* fnDirect3DCreate9Ex)(UINT, D9Real::IDirect3D9Ex**);
+typedef HRESULT(WINAPI* fnDirect3DCreate9Ex)(UINT, D9Real::IDirect3D9Ex**);
 
 // DX9 Hook function
 

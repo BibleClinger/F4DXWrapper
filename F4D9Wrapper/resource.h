@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by F4DXWrapper.rc
+// Used by F4D9Wrapper.rc
 //
 
 // Next default values for new objects

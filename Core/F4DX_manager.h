@@ -1,6 +1,5 @@
 #pragma once
 
-#include "d3d9_main.h"
 #include "F4IReader.h"
 #include <thread>
 #include <chrono>
@@ -8,27 +7,20 @@
 
 /*
 	TODO:
-		- Consider taking input from the BMS command line: -DXWrapperBMS_PollRate=50
+		- Consider taking input from the BMS command line (ie. -F4DXWrapper_PollRate=50) or via Falcon BMS.cfg (ie. set g_PollingMemoryRate2D <n>)
 */
 
-class d3d9_manager
+class F4DX_manager
 {
 private:
 	// Constants
-	inline static const char *m_szVersion = "0.0.4-alpha.2";
-	inline static const char *szRealDLLPath = "C:\\Windows\\system32\\d3d9.dll";
+	inline static const char *m_szVersion = "0.0.5-alpha.2";
 	constexpr static auto PollMemoryRate2D = std::chrono::milliseconds(50);		// We poll this in 2D, trying to get moving as soon as possible.
 	constexpr static auto PollMemoryRate3D = std::chrono::milliseconds(3000);	// We poll this in 3D, trying to sleep as long as possible.
 
 	///////////////
 	// Variables //
 	///////////////
-
-	// DLL Variables
-	HINSTANCE hinstThisDLL = nullptr;
-	HINSTANCE hinstRealDLL = nullptr;
-	fnDirect3DCreate9 fnCreate9 = nullptr;
-	fnDirect3DCreate9Ex fnCreate9Ex = nullptr;
 
 	// D3D9 variables
 	bool bDraw = true;
@@ -38,20 +30,19 @@ private:
 
 	// Object variables
 	F4IReader memReader;
-	std::thread* m_thread = nullptr;
 
-	d3d9_manager() = default;
+	// Constructor
+	F4DX_manager() = default;
 
 	// Private initialization functions
 	void initEnvironment();
-	void loadRealDLL();
 
 public:
-	static d3d9_manager& getManager()
+	static F4DX_manager& getManager()
 	{
 		// Thread-safe as of C++11 and VS2015.
 		// (see https://preshing.com/20130930/double-checked-locking-is-fixed-in-cpp11/)
-		static d3d9_manager singleton;
+		static F4DX_manager singleton;
 		return singleton;
 	}
 
@@ -64,15 +55,11 @@ public:
 	static BOOL WINAPI CtrlHandler(DWORD dwCtrlType) noexcept(true);
 
 	// Deleting constructor copy and assign. Singleton pattern, baby.
-	d3d9_manager(d3d9_manager const&) = delete;
-	void operator=(d3d9_manager const&) = delete;
-
-	// Initialization functions
-	void setDLL(HINSTANCE hinstDLL);
+	F4DX_manager(F4DX_manager const&) = delete;
+	void operator=(F4DX_manager const&) = delete;
 
 	// Functions to get function pointers to the real DirectX Create* functions.
-	fnDirect3DCreate9 getRealCreate9fn();
-	fnDirect3DCreate9Ex getRealCreate9Exfn();
+	FARPROC loadFunction(const char * const szLib, const char * const szFunc);
 
 	// Sets drawing conditions. true = drawing is enabled; false = drawing is disabled.
 	void setDraw(bool bDraw);
@@ -90,7 +77,7 @@ OUTPUT:
 	Instructions :		[CTRL+BRK]or[CTRL+ ]enables/disables drawing.
 
 	Example:
-		DXWrapper1.3.5(Draw:1;PollingRate:50ms)[CTRL+BRK]or[CTRL+ ]enables/disables drawing.
+		DXWrapper1.3.5(Draw:1;PollingRate:50ms)[CTRL+BRK]or[CTRL+C]enables/disables drawing.
 
 	To set Msg, call setTextOutput().
 */

@@ -21,9 +21,6 @@
     <ClInclude Include="IDirect3D9.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="d3d9_wrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IDirect3DDevice9.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -33,29 +30,23 @@
     <ClInclude Include="IDirect3D9Ex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="d3d9_real.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="d3d9_manager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="F4IReader.h">
+    <ClInclude Include="..\Core\F4DX_manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IVibeData.h">
+    <ClInclude Include="..\Core\F4IReader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Core\IVibeData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Core\F4DX_common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DLLMain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="d3d9_wrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IDirect3D9.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -65,18 +56,21 @@
     <ClCompile Include="IDirect3DDevice9Ex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="d3d9_manager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="F4IReader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="IDirect3D9Ex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d9_entry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Core\F4DX_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Core\F4IReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="F4DXWrapper.rc">
+    <ResourceCompile Include="F4D9Wrapper.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>

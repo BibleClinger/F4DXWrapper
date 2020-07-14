@@ -1,4 +1,4 @@
-#include "d3d9_manager.h"
+#include "F4DX_manager.h"
 #include <io.h>
 #include <fcntl.h>
 #include <iostream>
@@ -6,7 +6,7 @@
 #include <thread>
 #include <chrono>
 
-BOOL WINAPI d3d9_manager::CtrlHandler(DWORD dwCtrlType) noexcept(true)
+BOOL WINAPI F4DX_manager::CtrlHandler(DWORD dwCtrlType) noexcept(true)
 {
 	switch(dwCtrlType)
 	{
@@ -18,58 +18,33 @@ BOOL WINAPI d3d9_manager::CtrlHandler(DWORD dwCtrlType) noexcept(true)
 	return false;
 }
 
-void d3d9_manager::loadRealDLL()
+FARPROC F4DX_manager::loadFunction(const char * const szLib, const char * const szFunc)
 {
-	static bool bRealDLLLoaded = false;
+	HMODULE hMod = LoadLibrary(szLib);
 
-	if (!bRealDLLLoaded)
+	initEnvironment(); // This loads the environment if it hasn't been done already. This is key for normal operations.
+	if (hMod)
 	{
-		hinstRealDLL = LoadLibrary(szRealDLLPath);
-		if (hinstRealDLL)
+		FARPROC f = GetProcAddress(hMod, szFunc);
+		if (f)
 		{
-#pragma warning( disable : 4191)
-			fnCreate9 = reinterpret_cast<fnDirect3DCreate9>(GetProcAddress(hinstRealDLL, "Direct3DCreate9"));
-			fnCreate9Ex = reinterpret_cast<fnDirect3DCreate9Ex>(GetProcAddress(hinstRealDLL, "Direct3DCreate9Ex"));
-#pragma warning( default : 4191)
-			if (fnCreate9 && fnCreate9Ex)
-			{
-				bRealDLLLoaded = true;
-			}
+			return f;
 		}
 	}
+	return nullptr;
 }
 
-void d3d9_manager::setDLL(HINSTANCE hinstDLL)
+void F4DX_manager::initEnvironment()
 {
-	// Note: This call is expected from DLLMAIN.
-	// DO *NOT* DO ANTYHING HERE THAT ISN'T SAFE.
-	this->hinstThisDLL = hinstDLL;	
-}
-
-void d3d9_manager::initEnvironment()
-{
-	if(!bInit)
+	if(!bInit)	// We don't need to init more than once.
 	{
-		loadRealDLL();	// Load the real D3D9.dll. This is 100% necessary.
 		establishIO();	// Establish cheap IO with the server admin.
-		std::thread(&d3d9_manager::poll3DEnvironment, this).detach();  // Fire off the polling thread for Falcon memory analyzer. We don't join it on exit, so detach immediately.
+		std::thread(&F4DX_manager::poll3DEnvironment, this).detach();  // Fire off the polling thread for Falcon memory analyzer. We don't join it on exit, so detach immediately.
 		bInit = true;
 	}
 }
 
-fnDirect3DCreate9 d3d9_manager::getRealCreate9fn()
-{
-	initEnvironment();
-	return fnCreate9;
-}
-
-fnDirect3DCreate9Ex d3d9_manager::getRealCreate9Exfn()
-{
-	initEnvironment();
-	return fnCreate9Ex;
-}
-
-void d3d9_manager::setDraw(bool bNewDraw)
+void F4DX_manager::setDraw(bool bNewDraw)
 {
 	std::stringstream msg;
 	bDraw = bNewDraw;
@@ -78,18 +53,18 @@ void d3d9_manager::setDraw(bool bNewDraw)
 	setTextOutput(msg.str());
 }
 
-bool d3d9_manager::shouldDraw()
+bool F4DX_manager::shouldDraw()
 {
 	return bDraw;
 }
 
-void d3d9_manager::setTextOutput(std::string newMsg)
+void F4DX_manager::setTextOutput(std::string newMsg)
 {
 	std::string sTitle = "F4DXWrapper." + getVersion() + "(" + newMsg + ")[CTRL+BRK]or[CTRL+C]enables/disables drawing.";
 	SetConsoleTitle(sTitle.c_str());
 }
 
-void d3d9_manager::establishIO()
+void F4DX_manager::establishIO()
 {
 	bool bExistingConsole = false;
 	bool bAttached = false;
@@ -122,11 +97,11 @@ void d3d9_manager::establishIO()
 		*/
 	//}
 
-	SetConsoleCtrlHandler(d3d9_manager::CtrlHandler, TRUE);
+	SetConsoleCtrlHandler(F4DX_manager::CtrlHandler, TRUE);
 	setTextOutput("Waiting for 3D...");
 }
 
-void d3d9_manager::poll3DEnvironment()
+void F4DX_manager::poll3DEnvironment()
 {
 	bool bIn3D = false;
 	bool bIsExitGame = false;
