@@ -1,9 +1,9 @@
 # F4DXWrapper
-This project is a D3D9 Wrapper developed by BibleClinger that is compatible with Falcon BMS 4.34 U3, 4.34 U4, and 4.35 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
+This project is a D3D Wrapper developed by BibleClinger that is compatible with Falcon BMS 4.34 U3, 4.34 U4, and 4.35 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
 
 # Purpose
 
-BMS, at least up to 4.34 U3 as of this writing, does not have a dedicated server. The client must function as a server. Additionally, the server instance *must* enter the 3D world when hosting Campaigns and Tactical Engagements, even if it is to be used as a dedicated server. This unncessary rendering puts a strain on the Falcon BMS server.
+BMS, at least up to 4.35, does not have a dedicated server. The client must function as a server. Additionally, the server instance *must* enter the 3D world when hosting Campaigns and Tactical Engagements, even if it is to be used as a dedicated server. This unncessary rendering puts a strain on the Falcon BMS server.
 
 This DLL is meant as a lightweight interim solution to mitigate server stress until a proper dedicated server is created.
 
