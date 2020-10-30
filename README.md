@@ -3,7 +3,7 @@ This project is a D3D Wrapper developed by BibleClinger that is compatible with 
 
 # Purpose
 
-BMS, at least up to 4.35, does not have a dedicated server. The client must function as a server. Additionally, the server instance *must* enter the 3D world when hosting Campaigns and Tactical Engagements, even if it is to be used as a dedicated server. This unncessary rendering puts a strain on the Falcon BMS server.
+BMS, at least up to 4.35, does not have a dedicated server. The client must function as a server. Additionally, the server instance *must* enter the 3D world when hosting Campaigns and Tactical Engagements, even if it is to be used as a dedicated server. This unnecessary rendering puts a strain on the Falcon BMS server.
 
 This DLL is meant as a lightweight interim solution to mitigate server stress until a proper dedicated server is created.
 
