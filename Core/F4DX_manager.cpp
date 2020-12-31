@@ -36,26 +36,21 @@ FARPROC F4DX_manager::loadFunction(const char * const szLib, const char * const 
 
 void F4DX_manager::initEnvironment()
 {
-	if(!bInit)	// We don't need to init more than once.
-	{
+	std::call_once(bInit, [this] {
 		establishIO();	// Establish cheap IO with the server admin.
-		std::thread(&F4DX_manager::poll3DEnvironment, this).detach();  // Fire off the polling thread for Falcon memory analyzer. We don't join it on exit, so detach immediately.
-		bInit = true;
-	}
+		// Fire off the polling thread for Falcon memory analyzer.
+		// We don't join it on exit, so detach immediately.
+		std::thread(&F4DX_manager::poll3DEnvironment, this).detach();
+	});
 }
 
 void F4DX_manager::setDraw(bool bNewDraw)
 {
-	std::stringstream msg;
-	bDraw = bNewDraw;
+	bDraw.store(bNewDraw, std::memory_order_release);
 
+	std::stringstream msg;
 	msg << "Draw: " << bDraw << ";PollingRate: " << (!bDraw ? PollMemoryRate3D.count() : PollMemoryRate2D.count()) << "ms";
 	setTextOutput(msg.str());
-}
-
-bool F4DX_manager::shouldDraw()
-{
-	return bDraw;
 }
 
 void F4DX_manager::setTextOutput(std::string newMsg)
