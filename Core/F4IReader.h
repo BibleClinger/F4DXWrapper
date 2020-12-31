@@ -12,7 +12,7 @@ protected:
 	// Member Variables
 	HANDLE m_hMapping = nullptr;
 	HANDLE m_hView = nullptr;
-	IntellivibeData *m_ivData = nullptr;
+	volatile IntellivibeData *m_ivData = nullptr;
 
 public:
 	// Public functions
