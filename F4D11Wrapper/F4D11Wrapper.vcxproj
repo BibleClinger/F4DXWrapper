@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -188,12 +188,16 @@
     <ClInclude Include="..\Core\IVibeData.h" />
     <ClInclude Include="d3d11_main.h" />
     <ClInclude Include="ID3D11DeviceContext.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Core\F4DX_manager.cpp" />
     <ClCompile Include="..\Core\F4IReader.cpp" />
     <ClCompile Include="d3d11_entry.cpp" />
     <ClCompile Include="ID3D11DeviceContext.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="F4D11Wrapper.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
