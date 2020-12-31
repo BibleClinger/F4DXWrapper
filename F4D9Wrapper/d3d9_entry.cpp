@@ -1,6 +1,8 @@
 #include "d3d9_main.h"
 #include "IDirect3D9Ex.h" // This header needs to be specifically included, because we create an instance with new.
 
+// All entry points should be defined in this file.
+
 inline static const char* szRealDLLPath = "C:\\Windows\\system32\\d3d9.dll";
 
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)

@@ -2,6 +2,8 @@
 
 #include "F4DX_common.h"
 
+// All entry points except for DLLMain() should be declared in this file.
+
 namespace D9Real
 {
 #include <d3d9.h>

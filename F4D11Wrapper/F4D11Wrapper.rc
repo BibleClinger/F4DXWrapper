@@ -55,9 +55,9 @@ VS_VERSION_INFO VERSIONINFO
  PRODUCTVERSION 0,1,0,1
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
- FILEFLAGS 0xbL
+ FILEFLAGS 0x1L
 #else
- FILEFLAGS 0xaL
+ FILEFLAGS 0x0L
 #endif
  FILEOS 0x40004L
  FILETYPE 0x2L
@@ -68,12 +68,12 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "CompanyName", "BibleClinger"
-            VALUE "FileDescription", "A D3D9 Wrapper that is compatible with Falcon BMS 4.34 U3 and U4 servers."
+            VALUE "FileDescription", "A D3D11 Wrapper that is compatible with Falcon BMS 4.35 servers."
             VALUE "FileVersion", "0.1.0.1"
-            VALUE "InternalName", "d3d9.dll"
+            VALUE "InternalName", "d3d11.dll"
             VALUE "LegalCopyright", "Copyright (C) 2020: Provided ""as is."" You can use, copy, or fork the project/DLL, but just don't lie that you wrote the original version. :)"
-            VALUE "OriginalFilename", "d3d9.dll"
-            VALUE "ProductName", "F4DXWrapper: F4D9Wrapper"
+            VALUE "OriginalFilename", "d3d11.dll"
+            VALUE "ProductName", "F4DXWrapper: F4D11Wrapper"
             VALUE "ProductVersion", "0.1.0.1"
         END
     END

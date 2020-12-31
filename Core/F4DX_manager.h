@@ -7,14 +7,15 @@
 
 /*
 	TODO:
-		- Consider taking input from the BMS command line (ie. -F4DXWrapper_PollRate=50) or via Falcon BMS.cfg (ie. set g_PollingMemoryRate2D <n>)
+		- Consider taking input from the BMS command line (ie. -F4DXWrapper_PollRate=50) or via Falcon BMS.cfg (ie. set g_nPollingMemoryRate2D <n> and set g_nPollingMemoryRate3D <n>)
+
 */
 
 class F4DX_manager
 {
 private:
 	// Constants
-	inline static const char *m_szVersion = "0.0.5-alpha.2";
+	inline static const char *m_szVersion = "0.1.0-alpha.1";
 	constexpr static auto PollMemoryRate2D = std::chrono::milliseconds(50);		// We poll this in 2D, trying to get moving as soon as possible.
 	constexpr static auto PollMemoryRate3D = std::chrono::milliseconds(3000);	// We poll this in 3D, trying to sleep as long as possible.
 
