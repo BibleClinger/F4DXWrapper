@@ -7,7 +7,8 @@
 
 /*
 	TODO:
-		- Consider taking input from the BMS command line (ie. -F4DXWrapper_PollRate=50) or via Falcon BMS.cfg (ie. set g_PollingMemoryRate2D <n>)
+		- Consider taking input from the BMS command line (ie. -F4DXWrapper_PollRate=50) or via Falcon BMS.cfg (ie. set g_nPollingMemoryRate2D <n> and set g_nPollingMemoryRate3D <n>)
+
 */
 
 class F4DX_manager
