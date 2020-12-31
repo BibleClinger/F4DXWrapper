@@ -1,4 +1,5 @@
 # F4DXWrapper
+
 This project is a D3D Wrapper developed by BibleClinger that is compatible with Falcon BMS 4.34 U3, 4.34 U4, and 4.35 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
 
 # Purpose
@@ -28,6 +29,10 @@ Everything about Falcon BMS server operations apply, with some exceptions:
 1. If you need to enable/disable drawing:
    1. Place the focus on the aforementioned console window (and NOT the BMS window).
    1. Press either `CTRL + BREAK` or `CTRL + C`.
+
+# Documentation
+
+Please see the project wiki at github for more extensive documentation: https://github.com/BibleClinger/F4DXWrapper/wiki
 
 # Prior Testing
 
