@@ -1,37 +1,47 @@
 # F4DXWrapper
-This project is a D3D9 Wrapper developed by BibleClinger that is compatible with Falcon BMS 4.34 U3 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
+This project is a D3D Wrapper developed by BibleClinger that is compatible with Falcon BMS 4.34 U3, 4.34 U4, and 4.35 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
 
 # Purpose
 
-BMS, at least up to 4.34 U3 as of this writing, does not have a dedicated server. The client must function as a server. Additionally, the server instance *must* enter the 3D world when hosting Campaigns and Tactical Engagements, even if it is to be used as a dedicated server. This unncessary rendering puts a strain on the Falcon BMS server.
+BMS, at least up to 4.35, does not have a dedicated server. The client must function as a server. Additionally, the server instance *must* enter the 3D world when hosting Campaigns and Tactical Engagements, even if it is to be used as a dedicated server. This unnecessary rendering puts a strain on the Falcon BMS server.
 
 This DLL is meant as a lightweight interim solution to mitigate server stress until a proper dedicated server is created.
 
 # Installation
 
-Place `d3d9.dll` inside `Falcon BMS 4.34\bin\x64`.
+- For Falcon BMS 4.34, place `d3d9.dll` inside `Falcon BMS 4.34\bin\x64`.
+- For Falcon BMS 4.35, place `d3d11.dll` inside `Falcon BMS 4.35\bin\x64`.
+
+Please do not mix these files up!
+
+**Note:** *Falcon BMS 4.35 has NOT been released as of, yet. The implementation of d3d11.dll has been done based on the study of the D3D11 API.*
 
 # Usage (for Falcon BMS server administrators)
 
 Everything about Falcon BMS server operations apply, with some exceptions:
 
-- If the DLL has been installed and loaded successfully, you should see a console window (a black DOS-like window) when the server is launched. The title bar of the console window will have the name of the DLL project and the version.
-- It may appear that the server has frozen before it enters 3D. This likely means that the drawing has stopped successfully prior to drawing the 3D view. If your server is configured for audio, hearing the sound from the jet is a good sign all is working well.
-- When it comes time to exit the server from 3D, this may be difficult as you will be blind. Nevertheless:
-  - Ensure that focus is on the BMS window (and NOT the console window).
-  - Press `ESC -> E` to exit. You may need to pause briefly between the `ESC` and the `E`.
-- If you need to enable/disable drawing:
-  - Place the focus on the aforementioned console window (and NOT the BMS window).
-  - Press either `CTRL + BREAK` or `CTRL + C`.
+1. If the correct DLL has been installed and loaded successfully, you should see a console window (a black DOS-like window) when the server is launched. The title bar of the console window will have the name of the DLL project and the version.
+1. It may appear that the server has frozen before it enters 3D. This likely means that the drawing has stopped successfully prior to drawing the 3D view. If your server is configured for audio, hearing the sound from the jet is a good sign all is working well.
+1. When it comes time to exit the server from 3D, this may be difficult as you will be blind. Nevertheless:
+   1. Ensure that focus is on the BMS window (and NOT the console window).
+   1. Press `ESC -> E` to exit. You may need to pause briefly between the `ESC` and the `E`.
+1. If you need to enable/disable drawing:
+   1. Place the focus on the aforementioned console window (and NOT the BMS window).
+   1. Press either `CTRL + BREAK` or `CTRL + C`.
 
 # Prior Testing
 
-UOAF has tested this project throughout early development during regular weekly MP events. No crashes. \o/
+- The d3d9.dll was specifically tested extensively at UOAF during weekly events.
+- Special thanks to I-Hawk from the Falcon BMS dev team for testing different versions of the d3d11.dll implementation.
 
 # Extra Reading
 
+D3D9:
 * The Windows API for Direct3D 9: https://docs.microsoft.com/en-us/windows/win32/api/_direct3d9/. This resource is necessary for any D3D9 project.
 * Matt's Webcorner's D3D9Interceptor: http://graphics.stanford.edu/~mdfisher/D3D9Interceptor.html. Matt's work was very helpful in understanding how to intercept D3D9 calls.
+
+D3D11:
+* The Windows API for Direct3D 11: https://docs.microsoft.com/en-us/windows/win32/api/_direct3d11/
 
 # Disclaimer
 
