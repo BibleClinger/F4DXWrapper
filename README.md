@@ -7,14 +7,14 @@ BMS, at least up to 4.35, does not have a dedicated server. The client must func
 
 This DLL is meant as a lightweight interim solution to mitigate server stress until a proper dedicated server is created.
 
+**Note:** *Falcon BMS 4.35 has made the transition from DirectX9 to DirectX11. It has also made a vast improvement in attempting to separate the logic from the rendering. To quote one of the devs, as of the initial release of 4.35, "[...] BMS 4.35 is now ALWAYS CPU bound" with the exception of servers that have a "very weak GPU[.]" In short, if your server has no GPU or a weak GPU, you should expect to see some gains in performance by using this DLL. Otherwise, this DLL may provide negligible aid in 4.35 for those servers that have a decent GPU. The 4.34 DLL, however, should still provide a significant boost in performance for those that still wish to run that older version.*
+
 # Installation
 
 - For Falcon BMS 4.34, place `d3d9.dll` inside `Falcon BMS 4.34\bin\x64`.
 - For Falcon BMS 4.35, place `d3d11.dll` inside `Falcon BMS 4.35\bin\x64`.
 
 Please do not mix these files up!
-
-**Note:** *Falcon BMS 4.35 has NOT been released as of, yet. The implementation of d3d11.dll has been done based on the study of the D3D11 API.*
 
 # Usage (for Falcon BMS server administrators)
 
