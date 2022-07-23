@@ -1,6 +1,6 @@
 # F4DXWrapper
 
-This project is a D3D Wrapper developed by BibleClinger that is compatible with Falcon BMS 4.34 U3, 4.34 U4, and 4.35 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
+This project is a D3D Wrapper developed by BibleClinger that is compatible with Falcon BMS 4.34 U3, 4.34 U4, as well as 4.35, 4.36, and 4.37 servers. It stops rendering when the server goes into 3D, and enables rendering when the server comes back to 2D.
 
 # Purpose
 
@@ -14,6 +14,7 @@ This DLL is meant as a lightweight interim solution to mitigate server stress un
 
 - For Falcon BMS 4.34, place `d3d9.dll` inside `Falcon BMS 4.34\bin\x64`.
 - For Falcon BMS 4.35, place `d3d11.dll` inside `Falcon BMS 4.35\bin\x64`.
+- For Falcon BMS 4.36, place `d3d11.dll` inside `Falcon BMS 4.36\bin\x64`.
 
 Please do not mix these files up!
 
