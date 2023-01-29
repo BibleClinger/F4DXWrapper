@@ -1,8 +1,11 @@
 #pragma once
 
 #include "F4IReader.h"
-#include <thread>
+
+#include <atomic>
 #include <chrono>
+#include <thread>
+#include <mutex>
 #include <string>
 
 /*
@@ -24,10 +27,10 @@ private:
 	///////////////
 
 	// D3D9 variables
-	bool bDraw = true;
+	std::atomic_bool bDraw = true;
 
 	// Init variables
-	bool bInit = false;
+	std::once_flag bInit;
 
 	// Object variables
 	F4IReader memReader;
@@ -64,8 +67,11 @@ public:
 
 	// Sets drawing conditions. true = drawing is enabled; false = drawing is disabled.
 	void setDraw(bool bDraw);
-	// Gets the draw conditions. true = functions calls from BMS to DirectX should be passed through; false = functions calls from BMS to DirectX should be ignored.
-	bool shouldDraw();
+
+	// Gets the draw conditions.
+	// true = functions calls from BMS to DirectX should be passed through;
+	// false = functions calls from BMS to DirectX should be ignored.
+	bool shouldDraw() const { return bDraw.load(std::memory_order_acquire); }
 
 	// Establishes 
 	void establishIO();

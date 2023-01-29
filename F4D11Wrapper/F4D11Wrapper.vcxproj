@@ -171,7 +171,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>
       </ProgramDatabaseFile>
       <ProfileGuidedDatabase>$(OutDir)output\$(TargetName).pgd</ProfileGuidedDatabase>
